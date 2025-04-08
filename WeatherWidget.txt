@@ -1,0 +1,81 @@
+import 'package:flutter/material.dart';
+
+class Weatherwidget extends StatelessWidget {
+  final String cityName;
+  final String countryName;
+  final num temperatureC; //
+  final String condition;
+  final String conditionIcon;
+
+  Weatherwidget({
+    required this.cityName,
+    required this.countryName,
+    required this.temperatureC,
+    required this.condition,
+    required this.conditionIcon,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              cityName,
+              style: const TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              countryName,
+              style: const TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "$temperatureC",
+                      style: const TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      condition,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+                Image.network(
+                  conditionIcon,
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

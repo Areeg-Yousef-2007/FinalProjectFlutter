@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+
+import '../Models/weatherapp.dart';
+import '../service/weatherapp.dart';
+
+class WeatherProvider with ChangeNotifier {
+  WeatherModel? weather;
+
+  Future<void> fetchWeatherByCity(String city) async {
+    weather = await WeatherService.getWeatherByCity(city);
+    notifyListeners();
+  }
+}
