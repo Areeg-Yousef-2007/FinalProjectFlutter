@@ -48,6 +48,8 @@ class SearchScreen extends StatelessWidget {
                   onPressed: () {
                     String city = cityController.text; //
                     if (formKey.currentState!.validate()) {
+                      Provider.of<WeatherProvider>(context, listen: false)
+                          .weather = null;
                       Navigator.push(
                           context,
                           MaterialPageRoute(
